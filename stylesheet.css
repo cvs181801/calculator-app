@@ -35,7 +35,6 @@ body {
 
 .buttonsContain {
     display: flex;
-    flex-wrap: wrap;
     margin: 0 auto;
     text-align: center;
     align-content: center;
@@ -43,14 +42,16 @@ body {
 
 .buttons {
     border: 2px solid aqua;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 100%;
     border-radius: 13px; 
     margin-left: .9em;
     max-height: 70vh;
     width: 90vw;
-    
 }
 
-.operands {
+.buttons__operands {
     border: 2px solid aqua;
     border-radius: 13px; 
 }
@@ -60,6 +61,8 @@ body {
     border-radius: 50%; 
     margin-left: .3em;
     padding: .3em;
+    max-width: 2em;
+    max-height: 2em;
 
 }
 .operands__round {
