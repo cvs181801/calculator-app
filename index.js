@@ -88,9 +88,10 @@ divideBtn.addEventListener("click", function(event) {
     display.textContent += "/";
 })
 
+const getNum = /\d+/g;
+
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    const getNum = /\d+/g
     for (const char of display.textContent) {
         var numArray = display.textContent.match(getNum)  
     }
@@ -127,15 +128,28 @@ function multiply(value1, value2) {
 }
 
 let divided;
+let digitsArray = [];
 function divide(value1, value2) {
     display.textContent += "="
     divided = value1 / value2;
     var dividedRoundedDown = Math.floor(divided);
     var remainder = divided - dividedRoundedDown
+    console.log(remainder)
     if(remainder === 0) {
         display.textContent += divided;
     } else {
-        var roundedToTenthousandth = Math.round(remainder * 10000)
-        display.textContent = `${value1}/${value2}= ${dividedRoundedDown}.${roundedToTenthousandth}`
+        let decimalString = remainder.toString()
+        console.log("decimalString :", decimalString)
+        let decimalShaved = parseFloat(decimalString)
+        const splitStringArray = decimalString.split(".");
+        console.log(splitStringArray)
+        if (splitStringArray.length)
+       
+        console.log("decimalShaved :", decimalShaved)
+        console.log(decimalShaved * 10)
+        console.log(decimalShaved * 100)
+        var roundedToTenThousandth = Math.round(remainder * 10000)
+        
+        display.textContent = `${value1}/${value2}= ${dividedRoundedDown}.${roundedToTenThousandth}`
     }
 }
