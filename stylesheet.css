@@ -19,7 +19,36 @@ body {
     height: 50vh;
     border: 2px solid aqua;
     border-radius: 13px;
+}
 
+.display {
+    border: 2px solid aqua;
+    border-radius: 13px; 
+}
+
+.buttonsContain {
+    display: flex;
+}
+
+.buttons {
+    border: 2px solid aqua;
+    border-radius: 13px; 
 
 }
 
+.operands {
+    border: 2px solid aqua;
+    border-radius: 13px; 
+
+}
+
+.buttons__round {
+    border: 2px solid aqua;
+    border-radius: 50%; 
+
+}
+.operands__round {
+    border: 2px solid hotpink;
+    border-radius: 50%; 
+
+}
