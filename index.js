@@ -14,8 +14,14 @@ const addBtn = document.getElementById("+");
 const subtractBtn = document.getElementById("-");
 const equalsBtn = document.getElementById("=");
 const multiplyBtn = document.getElementById("x");
+const divideBtn = document.getElementById("/");
 
 const display = document.querySelector(".display__inner");
+
+zeroBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    display.textContent += 0;
+})
 
 oneBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -77,6 +83,11 @@ multiplyBtn.addEventListener("click", function(event) {
     display.textContent += "x";
 })
 
+divideBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    display.textContent += "/";
+})
+
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     const getNum = /\d+/g
@@ -89,6 +100,8 @@ equalsBtn.addEventListener("click", function(event) {
             subtract(parseInt(numArray[0]), parseInt(numArray[1]))
         } else if (display.textContent.includes("x")) {
             multiply(parseInt(numArray[0]), parseInt(numArray[1]))
+        } else if (display.textContent.includes("/")) {
+            divide(parseInt(numArray[0]), parseInt(numArray[1]))
         }
 })
 
@@ -111,4 +124,18 @@ function multiply(value1, value2) {
     multiple = value1 * value2;
     display.textContent += "="
     display.textContent += multiple;
+}
+
+let divided;
+function divide(value1, value2) {
+    display.textContent += "="
+    divided = value1 / value2;
+    var dividedRoundedDown = Math.floor(divided);
+    var remainder = divided - dividedRoundedDown
+    if(remainder === 0) {
+        display.textContent += divided;
+    } else {
+        var roundedToTenthousandth = Math.round(remainder * 10000)
+        display.textContent = `${value1}/${value2}= ${dividedRoundedDown}.${roundedToTenthousandth}`
+    }
 }
