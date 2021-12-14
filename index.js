@@ -13,8 +13,9 @@ const nineBtn = document.getElementById("9");
 const addBtn = document.getElementById("+");
 const subtractBtn = document.getElementById("-");
 const equalsBtn = document.getElementById("=");
-const multiplyBtn = document.getElementById("x");
+const multiplyBtn = document.getElementById("*");
 const divideBtn = document.getElementById("/");
+const decimalBtn = document.getElementById(".");
 
 const display = document.querySelector(".display__inner");
 
@@ -80,12 +81,17 @@ subtractBtn.addEventListener("click", function(event) {
 
 multiplyBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    display.textContent += "x";
+    display.textContent += "*";
 })
 
 divideBtn.addEventListener("click", function(event) {
     event.preventDefault();
     display.textContent += "/";
+})
+
+decimalBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    display.textContent += ".";
 })
 
 const getNum = /\d+/g;
@@ -96,6 +102,7 @@ equalsBtn.addEventListener("click", function(event) {
     for (const char of display.textContent) {
         var numArray = display.textContent.match(getNum) 
         var characterArray = display.textContent.match(getCharacter)
+        PEMDAS(parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), characterArray[1], parseInt(numArray[2]))
         
         // var plusCharacterArray = characterArray.filter(char => char === "+")
         // var minusCharacterArray = characterArray.filter(char => char === "-")
@@ -103,17 +110,17 @@ equalsBtn.addEventListener("click", function(event) {
         // var divideCharacterArray = characterArray.filter(char => char === "/")
         
     }
-        if (display.textContent.includes("+"))  {
-            add(parseInt(numArray[0]), parseInt(numArray[1]))
-        } else if (display.textContent.includes("-")) {
-            subtract(parseInt(numArray[0]), parseInt(numArray[1]))
-        } else if (display.textContent.includes("x")) {
-            multiply(parseInt(numArray[0]), parseInt(numArray[1]))
-        } else if (display.textContent.includes("/")) {
-            divide(parseInt(numArray[0]), parseInt(numArray[1]))
-        } else {
-            display.textContent = `too many or too little numbers!`
-        }
+        // if (display.textContent.includes("+"))  {
+        //     add(parseInt(numArray[0]), parseInt(numArray[1]))
+        // } else if (display.textContent.includes("-")) {
+        //     subtract(parseInt(numArray[0]), parseInt(numArray[1]))
+        // } else if (display.textContent.includes("*")) {
+        //     multiply(parseInt(numArray[0]), parseInt(numArray[1]))
+        // } else if (display.textContent.includes("/")) {
+        //     divide(parseInt(numArray[0]), parseInt(numArray[1]))
+        // } else {
+        //     display.textContent = `too many or too little numbers!`
+        // }
 })
 
 let sum;
@@ -161,10 +168,10 @@ function divide(value1, value2) {
     }
 }
 
-function PEMDAS(value1)//, operand1, value2, operand2, value3, operand3, value4, operand4, value5) {
-    {
-    return `${value1}` //${operand1} ${value2} ${operand2} ${value3} ${operand3} ${value4}, ${operand4}, ${value5}`
+function PEMDAS(value1, operand1, value2, operand2, value3) {
+    let result = `${value1} ${operand1} ${value2} ${operand2} ${value3}` //${operand3} ${value4}, ${operand4}, ${value5}`
+    display.textContent = result;
 }
 
-console.log(PEMDAS(4 + 3 * 7 - 14 / 7))
+
 
