@@ -33,6 +33,7 @@ body {
 
 .display {
     border: 2px solid var(--dark-aqua);
+    display: flex;
     border-radius: 13px; 
     height: 1.7em;
     width: 90vw;
@@ -51,7 +52,15 @@ body {
     height: 1.5em;
     width: 1.5em;
     font-size: 1.7rem;
-    
+    cursor: pointer;
+}
+
+.display__inner {
+    border: 1px solid hotpink;
+    height: 1.7em;
+    width: 10em;
+    text-align: left;
+    font-size: 1.7rem;
 }
 
 .buttonsContain {
@@ -73,6 +82,7 @@ body {
     width: 90vw;
     margin: .5em .5em 0 .5em;
     padding: .3em;
+  
 }
 
 .buttons__operands {
@@ -90,6 +100,7 @@ body {
     max-width: 2em;
     max-height: 2em;
     background-color: aqua;
+    cursor: pointer;
 
 }
 .operands__round {
@@ -97,7 +108,8 @@ body {
     border-radius: 50%; 
     margin: .3em auto 0 auto;
     padding: .3em;
-    background-color: hotpink;;
+    background-color: hotpink;
+    cursor: pointer;
 }
 
 @media (min-width: 600px) {
