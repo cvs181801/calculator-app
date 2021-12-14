@@ -1,0 +1,25 @@
+:root {
+    --light-aqua: rgb(160, 250, 250);
+    --black: rgb(22, 22, 22);
+    
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: var(--black);
+}
+
+.container {
+    width: 95vw;
+    height: 50vh;
+    border: 2px solid aqua;
+    border-radius: 13px;
+
+
+}
+
