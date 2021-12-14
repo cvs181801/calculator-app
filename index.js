@@ -139,19 +139,12 @@ function divide(value1, value2) {
         display.textContent += divided;
     } else {
         let decimalString = remainder.toString()
-        console.log("decimalString :", decimalString)
         let decimalShaved = parseFloat(decimalString)
-        console.log("decimalShaved :", decimalShaved)
-        console.log("decimalString.length :", decimalString.length)
         if (decimalString.length > 6) {
-            console.log("longer than 6")
             var roundedToTenThousandth = Math.round(decimalShaved * 10000)
             var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
-            console.log(decimalRoundedToTenThousandth)
-            console.log("dividedRoundedDown :", dividedRoundedDown)
             display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
         } else {
-            console.log("smaller than 6")
             nonintegerSum = dividedRoundedDown + decimalShaved
             display.textContent = `${value1}/${value2}= ${nonintegerSum}`
         }
