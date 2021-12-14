@@ -22,13 +22,19 @@ addBtn.addEventListener("click", function(event) {
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    if(display.textContent.includes("+"))  {
-        display.textContent += "= "
-        let sum = add(parseInt(display.textContent[0]),parseInt(display.textContent[2]))
-        display.textContent += sum;
-    } else {
-        console.log("try again")
+    const getNum = /\d+/g
+    let numArray = [];
+    for (const char of display.textContent) {
+        const num = display.textContent.match(getNum)  
+        
     }
+    // if(display.textContent.includes("+"))  {
+    //     display.textContent += "= "
+    //     let sum = add(parseInt(display.textContent[0]),parseInt(display.textContent[2]))
+    //     display.textContent += sum;
+    // } else {
+    //     console.log("try again")
+    // }
 })
 
 function add(value1, value2) {
