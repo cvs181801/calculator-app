@@ -13,10 +13,9 @@ const nineBtn = document.getElementById("9");
 const addBtn = document.getElementById("+");
 const subtractBtn = document.getElementById("-");
 const equalsBtn = document.getElementById("=");
+const multiplyBtn = document.getElementById("x");
 
 const display = document.querySelector(".display__inner");
-
-console.log(subtractBtn)
 
 oneBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -73,6 +72,11 @@ subtractBtn.addEventListener("click", function(event) {
     display.textContent += "-";
 })
 
+multiplyBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    display.textContent += "x";
+})
+
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     const getNum = /\d+/g
@@ -83,8 +87,9 @@ equalsBtn.addEventListener("click", function(event) {
             add(parseInt(numArray[0]), parseInt(numArray[1]))
         } else if (display.textContent.includes("-")) {
             subtract(parseInt(numArray[0]), parseInt(numArray[1]))
+        } else if (display.textContent.includes("x")) {
+            multiply(parseInt(numArray[0]), parseInt(numArray[1]))
         }
-
 })
 
 let sum;
@@ -99,4 +104,11 @@ function subtract(value1, value2) {
     difference = value1 - value2;
     display.textContent += "="
     display.textContent += difference;
+}
+
+let multiple;
+function multiply(value1, value2) {
+    multiple = value1 * value2;
+    display.textContent += "="
+    display.textContent += multiple;
 }
