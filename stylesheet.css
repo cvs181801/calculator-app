@@ -1,6 +1,8 @@
 :root {
     --light-aqua: rgb(160, 250, 250);
+    --dark-aqua: rgb(0, 110, 110);
     --black: rgb(22, 22, 22);
+    --dark-hotpink: rgb(151, 0, 76);
     
 }
 
@@ -20,17 +22,22 @@ body {
 .container {
     width: 95vw;
     height: 95vh;
-    border: 2px solid aqua;
+    border: 2px solid var(--dark-aqua);
     border-radius: 13px;
-    margin: 0 auto;
+    margin: .7em auto 0 auto;
     background-color: var(--light-aqua);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .display {
-    border: 2px solid aqua;
+    border: 2px solid var(--dark-aqua);
     border-radius: 13px; 
-    height: 1em;
+    height: 1.7em;
     width: 90vw;
+    max-height: 5em;
+    margin: 1.5em auto 0 auto;
 }
 
 .buttonsContain {
@@ -38,10 +45,11 @@ body {
     margin: 0 auto;
     text-align: center;
     align-content: center;
+    margin: 0 auto;
 }
 
 .buttons {
-    border: 2px solid aqua;
+    border: 2px solid var(--dark-aqua);
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 100%;
@@ -49,26 +57,44 @@ body {
     margin-left: .9em;
     max-height: 70vh;
     width: 90vw;
+    margin: .5em .5em 0 .5em;
+    padding: .3em;
 }
 
 .buttons__operands {
-    border: 2px solid aqua;
+    border: 2px solid var(--dark-aqua);
     border-radius: 13px; 
+    margin: .5em .5em 0 .5em;
+    padding: .3em;
 }
 
 .buttons__round {
-    border: 2px solid aqua;
+    border: 2px solid var(--dark-aqua);
     border-radius: 50%; 
-    margin-left: .3em;
+    margin: .3em auto 0 auto;
     padding: .3em;
     max-width: 2em;
     max-height: 2em;
+    background-color: aqua;
 
 }
 .operands__round {
-    border: 2px solid hotpink;
+    border: 2px solid var(--dark-hotpink);
     border-radius: 50%; 
-    margin-left: .3em;
+    margin: .3em auto 0 auto;
     padding: .3em;
+    background-color: hotpink;;
+}
 
+@media (min-width: 600px) {
+    .container {
+        width: 35vw;
+        height: 75vh;
+        margin: 2.5em auto 0 auto;
+    }
+
+    .display {
+        max-width: 30vw;
+        max-height: 5em;
+    }
 }
