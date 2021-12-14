@@ -89,13 +89,21 @@ divideBtn.addEventListener("click", function(event) {
 })
 
 const getNum = /\d+/g;
+const getCharacter = /\W/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
-        var numArray = display.textContent.match(getNum)  
+        var numArray = display.textContent.match(getNum) 
+        var characterArray = display.textContent.match(getCharacter)
+        
+        // var plusCharacterArray = characterArray.filter(char => char === "+")
+        // var minusCharacterArray = characterArray.filter(char => char === "-")
+        // var multiplyCharacterArray = characterArray.filter(char => char === "x")
+        // var divideCharacterArray = characterArray.filter(char => char === "/")
+        
     }
-        if(display.textContent.includes("+"))  {
+        if (display.textContent.includes("+"))  {
             add(parseInt(numArray[0]), parseInt(numArray[1]))
         } else if (display.textContent.includes("-")) {
             subtract(parseInt(numArray[0]), parseInt(numArray[1]))
@@ -103,6 +111,8 @@ equalsBtn.addEventListener("click", function(event) {
             multiply(parseInt(numArray[0]), parseInt(numArray[1]))
         } else if (display.textContent.includes("/")) {
             divide(parseInt(numArray[0]), parseInt(numArray[1]))
+        } else {
+            display.textContent = `too many or too little numbers!`
         }
 })
 
@@ -140,13 +150,21 @@ function divide(value1, value2) {
     } else {
         let decimalString = remainder.toString()
         let decimalShaved = parseFloat(decimalString)
-        if (decimalString.length > 6) {
-            var roundedToTenThousandth = Math.round(decimalShaved * 10000)
-            var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
-            display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
-        } else {
-            nonintegerSum = dividedRoundedDown + decimalShaved
-            display.textContent = `${value1}/${value2}= ${nonintegerSum}`
-        }
+            if (decimalString.length > 6) {
+                var roundedToTenThousandth = Math.round(decimalShaved * 10000)
+                var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
+                display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
+            } else {
+                nonintegerSum = dividedRoundedDown + decimalShaved
+                display.textContent = `${value1}/${value2}= ${nonintegerSum}`
+            }
     }
 }
+
+function PEMDAS(value1)//, operand1, value2, operand2, value3, operand3, value4, operand4, value5) {
+    {
+    return `${value1}` //${operand1} ${value2} ${operand2} ${value3} ${operand3} ${value4}, ${operand4}, ${value5}`
+}
+
+console.log(PEMDAS(4 + 3 * 7 - 14 / 7))
+
