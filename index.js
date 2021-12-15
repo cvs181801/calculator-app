@@ -95,19 +95,24 @@ decimalBtn.addEventListener("click", function(event) {
 })
 
 const getNum = /\d+/g;
-const getCharacter = /\W/g;
+const getNumWithDec =  /\d*\.?\d+/g; 
+const getCharacter =   /(?!\.*.)\W/g; //   /\W/g; 
 //const getNumAndChar = /\d+\W/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
         var numArray = display.textContent.match(getNum) 
+        var numWithDecArray = display.textContent.match(getNumWithDec)
         var characterArray = display.textContent.match(getCharacter)
         //var numAndCharArray = display.textContent.match(getNumAndChar)
 
-        var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), 
-        characterArray[1], parseInt(numArray[2]), characterArray[2], 
-        parseInt(numArray[3]), characterArray[3], parseInt(numArray[4]), characterArray[4]]
+        console.log(characterArray)
+        console.log(numWithDecArray);
+
+        var fullArray = [parseInt(numWithDecArray[0]), characterArray[0], parseInt(numWithDecArray[1]), 
+        characterArray[1], parseInt(numWithDecArray[2]), characterArray[2], 
+        parseInt(numWithDecArray[3]), characterArray[3], parseInt(numWithDecArray[4]), characterArray[4]]
        
         MDAS(fullArray)     
     }
@@ -173,7 +178,6 @@ function MDAS(array) {
         array.splice((starIndex -1), 3, (multiply(array.at(starIndex -1), array.at(starIndex +1))))
     }
     console.log("array after loop :", array)
-    //display.textContent = array[0]
     DAS(array) 
 }    
 
