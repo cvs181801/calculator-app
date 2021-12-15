@@ -96,52 +96,33 @@ decimalBtn.addEventListener("click", function(event) {
 
 const getNum = /\d+/g;
 const getCharacter = /\W/g;
-const getNumAndChar = /\d+\W/g;
+//const getNumAndChar = /\d+\W/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
         var numArray = display.textContent.match(getNum) 
         var characterArray = display.textContent.match(getCharacter)
-        var numAndCharArray = display.textContent.match(getNumAndChar)
+        //var numAndCharArray = display.textContent.match(getNumAndChar)
+
         var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), 
         characterArray[1], parseInt(numArray[2]), characterArray[2], 
         parseInt(numArray[3]), characterArray[3], parseInt(numArray[4]), characterArray[4]]
        
-        MDAS(fullArray)
-        
-        // var plusCharacterArray = characterArray.filter(char => char === "+")
-        // var minusCharacterArray = characterArray.filter(char => char === "-")
-        // var multiplyCharacterArray = characterArray.filter(char => char === "x")
-        // var divideCharacterArray = characterArray.filter(char => char === "/")
-        
+        MDAS(fullArray)     
     }
-        // if (display.textContent.includes("+"))  {
-        //     add(parseInt(numArray[0]), parseInt(numArray[1]))
-        // } else if (display.textContent.includes("-")) {
-        //     subtract(parseInt(numArray[0]), parseInt(numArray[1]))
-        // } else if (display.textContent.includes("*")) {
-        //     multiply(parseInt(numArray[0]), parseInt(numArray[1]))
-        // } else if (display.textContent.includes("/")) {
-        //     divide(parseInt(numArray[0]), parseInt(numArray[1]))
-        // } else {
-        //     display.textContent = `too many or too little numbers!`
-        // }
+
 })
 
 let sum;
 function add(value1, value2) {
     sum = value1 + value2;
-    //display.textContent += "="
-    //display.textContent += sum;
     return sum
 }
 
 let difference;
 function subtract(value1, value2) {
     difference = value1 - value2;
-    //display.textContent += "="
-    //display.textContent += difference;
     return difference
 }
 
@@ -149,15 +130,11 @@ let multiple;
 function multiply(value1, value2) {
     multiple = value1 * value2;
     return multiple
-    //display.textContent += "="
-    //display.textContent += multiple;
-    //console.log("multiplied value :", multiple)
 }
 
 let divided;
 let digitsArray = [];
 function divide(value1, value2) {
-    //display.textContent += "="
     divided = value1 / value2;
     console.log(divided)
     return divided
