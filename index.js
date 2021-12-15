@@ -145,9 +145,10 @@ function subtract(value1, value2) {
 let multiple;
 function multiply(value1, value2) {
     multiple = value1 * value2;
+    return multiple
     //display.textContent += "="
     //display.textContent += multiple;
-    console.log("multiplied value :", multiple)
+    //console.log("multiplied value :", multiple)
 }
 
 let divided;
@@ -199,11 +200,12 @@ function PEMDAS(array) {
      const multipleArray = array.filter((element) => {
        return element === "*"
      })
-    
-    console.log(multipleArray)
-        // var starIndex = array.findIndex((element) => element === "*")
-        // console.log(starIndex, starIndex -1, starIndex +1) 
-        // multiply(array.at(starIndex -1), array.at(starIndex +1))
+    for (let i=0; i <= multipleArray.length; i++) {
+        var starIndex = array.findIndex((element) => element === "*")
+        console.log(starIndex, starIndex -1, starIndex +1) 
+        
+        array.splice(starIndex -1, 3, multiply(array.at(starIndex -1), array.at(starIndex +1)))
+    }
 }
 
 //create a constructor function to build a template for arithmetic
