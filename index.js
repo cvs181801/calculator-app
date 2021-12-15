@@ -168,10 +168,32 @@ function divide(value1, value2) {
     }
 }
 
-function PEMDAS(value1, operand1, value2, operand2, value3) {
-    let result = `${value1} ${operand1} ${value2} ${operand2} ${value3}` //${operand3} ${value4}, ${operand4}, ${value5}`
-    display.textContent = result;
+// function PEMDAS(value1, operand1, value2, operand2, value3) {
+//     console.log(value1, operand1, value2 + value3)
+//     //return `${value1} ${operand1} ${value2} ${operand2} ${value3}` //${operand3} ${value4}, ${operand4}, ${value5}`
+//     //display.textContent = result;
+    
+// }
+
+const numbers = {
+    1: 1,
+    2: 2,
+    3: 3
 }
 
+const operations = {
+    "multiply": "*",
+    "divide": "/",
+    "add": "+",
+    "subtract": "-"
+}
 
+//create a constructor function to build a template for arithmetic
+//use constructor function to build new method based on user inputs, up to 4
+//then have a method that takes arguments
+
+
+//function compute(num1, num2) {
+   
+//}
 
