@@ -106,8 +106,7 @@ equalsBtn.addEventListener("click", function(event) {
         var numAndCharArray = display.textContent.match(getNumAndChar)
         var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), characterArray[1], parseInt(numArray[2]), characterArray[2], 
         parseInt(numArray[3]), characterArray[3], parseInt(numArray[4]), characterArray[4]]
-        console.log(fullArray)
-
+       
         PEMDAS(fullArray)
         
         // var plusCharacterArray = characterArray.filter(char => char === "+")
@@ -196,11 +195,15 @@ const operations = {
 }
 
 function PEMDAS(array) {
-    var starIndex = array.findIndex((element) => element === "*")
-    console.log(starIndex, starIndex -1, starIndex +1) 
-    multiply(array.at(starIndex -1), array.at(starIndex +1))
-
-
+    console.log(array)
+     const multipleArray = array.filter((element) => {
+       return element === "*"
+     })
+    
+    console.log(multipleArray)
+        // var starIndex = array.findIndex((element) => element === "*")
+        // console.log(starIndex, starIndex -1, starIndex +1) 
+        // multiply(array.at(starIndex -1), array.at(starIndex +1))
 }
 
 //create a constructor function to build a template for arithmetic
