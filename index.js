@@ -96,13 +96,19 @@ decimalBtn.addEventListener("click", function(event) {
 
 const getNum = /\d+/g;
 const getCharacter = /\W/g;
+const getNumAndChar = /\d+\W/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
         var numArray = display.textContent.match(getNum) 
         var characterArray = display.textContent.match(getCharacter)
-        PEMDAS(parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), characterArray[1], parseInt(numArray[2]))
+        var numAndCharArray = display.textContent.match(getNumAndChar)
+        var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), characterArray[1], parseInt(numArray[2]), characterArray[2], 
+        parseInt(numArray[3]), characterArray[3], parseInt(numArray[4]), characterArray[4]]
+        console.log(fullArray)
+
+        PEMDAS(fullArray)
         
         // var plusCharacterArray = characterArray.filter(char => char === "+")
         // var minusCharacterArray = characterArray.filter(char => char === "-")
@@ -140,8 +146,9 @@ function subtract(value1, value2) {
 let multiple;
 function multiply(value1, value2) {
     multiple = value1 * value2;
-    display.textContent += "="
-    display.textContent += multiple;
+    //display.textContent += "="
+    //display.textContent += multiple;
+    console.log("multiplied value :", multiple)
 }
 
 let divided;
@@ -186,6 +193,14 @@ const operations = {
     "divide": "/",
     "add": "+",
     "subtract": "-"
+}
+
+function PEMDAS(array) {
+    var starIndex = array.findIndex((element) => element === "*")
+    console.log(starIndex, starIndex -1, starIndex +1) 
+    multiply(array.at(starIndex -1), array.at(starIndex +1))
+
+
 }
 
 //create a constructor function to build a template for arithmetic
