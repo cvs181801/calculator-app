@@ -104,10 +104,11 @@ equalsBtn.addEventListener("click", function(event) {
         var numArray = display.textContent.match(getNum) 
         var characterArray = display.textContent.match(getCharacter)
         var numAndCharArray = display.textContent.match(getNumAndChar)
-        var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), characterArray[1], parseInt(numArray[2]), characterArray[2], 
+        var fullArray = [parseInt(numArray[0]), characterArray[0], parseInt(numArray[1]), 
+        characterArray[1], parseInt(numArray[2]), characterArray[2], 
         parseInt(numArray[3]), characterArray[3], parseInt(numArray[4]), characterArray[4]]
        
-        PEMDAS(fullArray)
+        MDAS(fullArray)
         
         // var plusCharacterArray = characterArray.filter(char => char === "+")
         // var minusCharacterArray = characterArray.filter(char => char === "-")
@@ -154,72 +155,60 @@ function multiply(value1, value2) {
 let divided;
 let digitsArray = [];
 function divide(value1, value2) {
-    display.textContent += "="
+    //display.textContent += "="
     divided = value1 / value2;
-    var dividedRoundedDown = Math.floor(divided);
-    var remainder = divided - dividedRoundedDown
-    console.log(remainder)
-    if(remainder === 0) {
-        display.textContent += divided;
-    } else {
-        let decimalString = remainder.toString()
-        let decimalShaved = parseFloat(decimalString)
-            if (decimalString.length > 6) {
-                var roundedToTenThousandth = Math.round(decimalShaved * 10000)
-                var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
-                display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
-            } else {
-                nonintegerSum = dividedRoundedDown + decimalShaved
-                display.textContent = `${value1}/${value2}= ${nonintegerSum}`
-            }
-    }
+    console.log(divided)
+    return divided
+
+    //var dividedRoundedDown = Math.floor(divided);
+    //var remainder = divided - dividedRoundedDown
+    //console.log(remainder)
+    // if(remainder === 0) {
+    //     //display.textContent += divided;
+    //     return divided
+    // } else {
+    //     let decimalString = remainder.toString()
+    //     let decimalShaved = parseFloat(decimalString)
+    //         if (decimalString.length > 6) {
+    //             var roundedToTenThousandth = Math.round(decimalShaved * 10000)
+    //             var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
+    //             //display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
+    //             return dividedRoundedDown + decimalRoundedToTenThousandth
+    //         } else {
+    //             nonintegerSum = dividedRoundedDown + decimalShaved
+    //             //display.textContent = `${value1}/${value2}= ${nonintegerSum}`
+    //             return nonintegerSum
+    //         }
+    //}
 }
 
-// function PEMDAS(value1, operand1, value2, operand2, value3) {
-//     console.log(value1, operand1, value2 + value3)
-//     //return `${value1} ${operand1} ${value2} ${operand2} ${value3}` //${operand3} ${value4}, ${operand4}, ${value5}`
-//     //display.textContent = result;
-    
-// }
-
-const numbers = {
-    1: 1,
-    2: 2,
-    3: 3
-}
-
-const operations = {
-    "multiply": "*",
-    "divide": "/",
-    "add": "+",
-    "subtract": "-"
-}
-
-function PEMDAS(array) {
+function MDAS(array) {
     console.log(array)
      const multipleArray = array.filter((element) => {
        return element === "*"
      })
-    for (let i=0; i <= multipleArray.length; i++) {
+    for (let i=0; i < multipleArray.length; i++) {
+        console.log(array)
         var starIndex = array.findIndex((element) => element === "*")
-        console.log(starIndex, starIndex -1, starIndex +1) 
-        
-        array.splice(starIndex -1, 3, multiply(array.at(starIndex -1), array.at(starIndex +1)))
+        console.log(starIndex, starIndex -1, starIndex +1)  
+        array.splice((starIndex -1), 3, (multiply(array.at(starIndex -1), array.at(starIndex +1))))
+    }
+    console.log("array after loop :", array)
+    display.textContent = array[0]
+    DAS(array) 
+}    
+
+function DAS(array) {
+    const divisionArray = array.filter((element) => {
+        return element === "/"
+      })
+      console.log(divisionArray) 
+    for (let i=0; i < divisionArray.length; i++) {
+        console.log(array)
+        var divideIndex = array.findIndex((element) => element === "/")
+        console.log(divideIndex, divideIndex -1, divideIndex +1)  
+        array.splice((divideIndex -1), 3, (divide(array.at(divideIndex -1), array.at(divideIndex +1))))
     }
 }
 
-//create a constructor function to build a template for arithmetic
-function createNewCompute(operation1, operation2, operation3, operation4) {
-    this.operation1 = operation1,
-    this.operation2 = operation2,
-    this.operation3 = operation3,
-    this.operation4 = operation4
-}
-//use constructor function to build new method based on user inputs, up to 4
-//then have a method that takes arguments
-
-
-//function compute(num1, num2) {
-   
-//}
 
