@@ -96,8 +96,8 @@ decimalBtn.addEventListener("click", function(event) {
 
 const getNum = /\d+/g;
 const getNumWithDec =  /\d*\.?\d+/g; 
-const getCharacter =   /(?!\.*.)\W/g; //   /\W/g; 
-//const getNumAndChar = /\d+\W/g;
+//const getCharacter = /\W/g;  This is what I was using previously, but it was causing a bug because it was capturing periods along with the rest of the characters
+const getCharacter =   /(?!\.*.)\W/g;  //this approach isn't quite working - now it's not capturing any characters...  
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -105,7 +105,6 @@ equalsBtn.addEventListener("click", function(event) {
         var numArray = display.textContent.match(getNum) 
         var numWithDecArray = display.textContent.match(getNumWithDec)
         var characterArray = display.textContent.match(getCharacter)
-        //var numAndCharArray = display.textContent.match(getNumAndChar)
 
         console.log(characterArray)
         console.log(numWithDecArray);
