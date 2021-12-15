@@ -189,6 +189,12 @@ const operations = {
 }
 
 //create a constructor function to build a template for arithmetic
+function createNewCompute(operation1, operation2, operation3, operation4) {
+    this.operation1 = operation1,
+    this.operation2 = operation2,
+    this.operation3 = operation3,
+    this.operation4 = operation4
+}
 //use constructor function to build new method based on user inputs, up to 4
 //then have a method that takes arguments
 
