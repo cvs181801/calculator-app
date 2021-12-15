@@ -132,15 +132,17 @@ equalsBtn.addEventListener("click", function(event) {
 let sum;
 function add(value1, value2) {
     sum = value1 + value2;
-    display.textContent += "="
-    display.textContent += sum;
+    //display.textContent += "="
+    //display.textContent += sum;
+    return sum
 }
 
 let difference;
 function subtract(value1, value2) {
     difference = value1 - value2;
-    display.textContent += "="
-    display.textContent += difference;
+    //display.textContent += "="
+    //display.textContent += difference;
+    return difference
 }
 
 let multiple;
@@ -194,7 +196,7 @@ function MDAS(array) {
         array.splice((starIndex -1), 3, (multiply(array.at(starIndex -1), array.at(starIndex +1))))
     }
     console.log("array after loop :", array)
-    display.textContent = array[0]
+    //display.textContent = array[0]
     DAS(array) 
 }    
 
@@ -209,6 +211,37 @@ function DAS(array) {
         console.log(divideIndex, divideIndex -1, divideIndex +1)  
         array.splice((divideIndex -1), 3, (divide(array.at(divideIndex -1), array.at(divideIndex +1))))
     }
+    console.log("array after div loop :", array)
+    AS(array)
 }
 
+function AS(array) {
+    const additionArray = array.filter((element) => {
+        return element === "+"
+      })
+      console.log(additionArray) 
+    for (let i=0; i < additionArray.length; i++) {
+        console.log(array)
+        var addIndex = array.findIndex((element) => element === "+")
+        console.log(addIndex, addIndex -1, addIndex +1)  
+        array.splice((addIndex -1), 3, (add(array.at(addIndex -1), array.at(addIndex +1))))
+    }
+    console.log("array after add loop :", array)
+    S(array)
+}
 
+function S(array) {
+    const subtractArray = array.filter((element) => {
+        return element === "-"
+      })
+      console.log(subtractArray) 
+    for (let i=0; i < subtractArray.length; i++) {
+        console.log(array)
+        var subtractIndex = array.findIndex((element) => element === "-")
+        console.log(subtractIndex, subtractIndex -1, subtractIndex +1)  
+        array.splice((subtractIndex -1), 3, (subtract(array.at(subtractIndex -1), array.at(subtractIndex +1))))
+    }
+    console.log("array after subtract loop :", array)
+    display.textContent = array[0]
+ 
+}
