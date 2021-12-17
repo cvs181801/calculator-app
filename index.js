@@ -116,10 +116,11 @@ equalsBtn.addEventListener("click", function(event) {
 
         console.log("newCharsArray :", newCharsArray)
 
-        var fullArray = [parseInt(numWithDecArray[0]), newCharsArray[0], parseInt(numWithDecArray[1]), 
-        newCharsArray[1], parseInt(numWithDecArray[2]), newCharsArray[2], 
-        parseInt(numWithDecArray[3]), newCharsArray[3], parseInt(numWithDecArray[4]), newCharsArray[4]]
+        var fullArray = [parseFloat(numWithDecArray[0]), newCharsArray[0], parseFloat(numWithDecArray[1]), 
+        newCharsArray[1], parseFloat(numWithDecArray[2]), newCharsArray[2], 
+        parseFloat(numWithDecArray[3]), newCharsArray[3], parseFloat(numWithDecArray[4]), newCharsArray[4]]
        
+        console.log(fullArray)
         MDAS(fullArray)     
     }
 
@@ -230,5 +231,4 @@ function S(array) {
     }
     console.log("array after subtract loop :", array)
     display.textContent = array[0]
- 
 }
