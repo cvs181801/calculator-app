@@ -56,7 +56,6 @@ body {
 }
 
 .display__inner {
-    border: 1px solid hotpink;
     height: 1.7em;
     width: 10em;
     text-align: left;

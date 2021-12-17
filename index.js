@@ -97,21 +97,28 @@ decimalBtn.addEventListener("click", function(event) {
 const getNum = /\d+/g;
 const getNumWithDec =  /\d*\.?\d+/g; 
 //const getCharacter = /\W/g;  This is what I was using previously, but it was causing a bug because it was capturing periods along with the rest of the characters
-const getCharacter =   /(?!\.*.)\W/g;  //this approach isn't quite working - now it's not capturing any characters...  
+//const getCharacter =   /(?!\.*.)\W/g;  //this approach isn't quite working - now it's not capturing any characters...  
+const getCharacters = /([-+*/]?)/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
-        var numArray = display.textContent.match(getNum) 
+        //var numArray = display.textContent.match(getNum) 
         var numWithDecArray = display.textContent.match(getNumWithDec)
-        var characterArray = display.textContent.match(getCharacter)
+        var charactersArray = display.textContent.match(getCharacters)
 
-        console.log(characterArray)
+        console.log(charactersArray)
         console.log(numWithDecArray);
 
-        var fullArray = [parseInt(numWithDecArray[0]), characterArray[0], parseInt(numWithDecArray[1]), 
-        characterArray[1], parseInt(numWithDecArray[2]), characterArray[2], 
-        parseInt(numWithDecArray[3]), characterArray[3], parseInt(numWithDecArray[4]), characterArray[4]]
+        const newCharsArray = charactersArray.filter(char => {
+           return char !== ''
+        })
+
+        console.log("newCharsArray :", newCharsArray)
+
+        var fullArray = [parseInt(numWithDecArray[0]), newCharsArray[0], parseInt(numWithDecArray[1]), 
+        newCharsArray[1], parseInt(numWithDecArray[2]), newCharsArray[2], 
+        parseInt(numWithDecArray[3]), newCharsArray[3], parseInt(numWithDecArray[4]), newCharsArray[4]]
        
         MDAS(fullArray)     
     }
