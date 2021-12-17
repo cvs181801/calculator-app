@@ -16,7 +16,7 @@ const equalsBtn = document.getElementById("=");
 const multiplyBtn = document.getElementById("*");
 const divideBtn = document.getElementById("/");
 const decimalBtn = document.getElementById(".");
-
+const clearBtn = document.querySelector(".display__clear");
 const display = document.querySelector(".display__inner");
 
 zeroBtn.addEventListener("click", function(event) {
@@ -94,33 +94,28 @@ decimalBtn.addEventListener("click", function(event) {
     display.textContent += ".";
 })
 
-const getNum = /\d+/g;
-const getNumWithDec =  /\d*\.?\d+/g; 
-//const getCharacter = /\W/g;  This is what I was using previously, but it was causing a bug because it was capturing periods along with the rest of the characters
-//const getCharacter =   /(?!\.*.)\W/g;  //this approach isn't quite working - now it's not capturing any characters...  
+clearBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    display.textContent = "";
+})
+
+const getNumWithDec =  /\d*\.?\d+/g;  
 const getCharacters = /([-+*/]?)/g;
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     for (const char of display.textContent) {
-        //var numArray = display.textContent.match(getNum) 
         var numWithDecArray = display.textContent.match(getNumWithDec)
         var charactersArray = display.textContent.match(getCharacters)
-
-        console.log(charactersArray)
-        console.log(numWithDecArray);
 
         const newCharsArray = charactersArray.filter(char => {
            return char !== ''
         })
 
-        console.log("newCharsArray :", newCharsArray)
-
         var fullArray = [parseFloat(numWithDecArray[0]), newCharsArray[0], parseFloat(numWithDecArray[1]), 
         newCharsArray[1], parseFloat(numWithDecArray[2]), newCharsArray[2], 
         parseFloat(numWithDecArray[3]), newCharsArray[3], parseFloat(numWithDecArray[4]), newCharsArray[4]]
        
-        console.log(fullArray)
         MDAS(fullArray)     
     }
 
@@ -148,29 +143,7 @@ let divided;
 let digitsArray = [];
 function divide(value1, value2) {
     divided = value1 / value2;
-    console.log(divided)
     return divided
-
-    //var dividedRoundedDown = Math.floor(divided);
-    //var remainder = divided - dividedRoundedDown
-    //console.log(remainder)
-    // if(remainder === 0) {
-    //     //display.textContent += divided;
-    //     return divided
-    // } else {
-    //     let decimalString = remainder.toString()
-    //     let decimalShaved = parseFloat(decimalString)
-    //         if (decimalString.length > 6) {
-    //             var roundedToTenThousandth = Math.round(decimalShaved * 10000)
-    //             var decimalRoundedToTenThousandth = roundedToTenThousandth / 10000
-    //             //display.textContent = `${value1}/${value2}= ${dividedRoundedDown + decimalRoundedToTenThousandth}`
-    //             return dividedRoundedDown + decimalRoundedToTenThousandth
-    //         } else {
-    //             nonintegerSum = dividedRoundedDown + decimalShaved
-    //             //display.textContent = `${value1}/${value2}= ${nonintegerSum}`
-    //             return nonintegerSum
-    //         }
-    //}
 }
 
 function MDAS(array) {
@@ -179,12 +152,9 @@ function MDAS(array) {
        return element === "*"
      })
     for (let i=0; i < multipleArray.length; i++) {
-        console.log(array)
         var starIndex = array.findIndex((element) => element === "*")
-        console.log(starIndex, starIndex -1, starIndex +1)  
         array.splice((starIndex -1), 3, (multiply(array.at(starIndex -1), array.at(starIndex +1))))
     }
-    console.log("array after loop :", array)
     DAS(array) 
 }    
 
@@ -192,14 +162,10 @@ function DAS(array) {
     const divisionArray = array.filter((element) => {
         return element === "/"
       })
-      console.log(divisionArray) 
     for (let i=0; i < divisionArray.length; i++) {
-        console.log(array)
         var divideIndex = array.findIndex((element) => element === "/")
-        console.log(divideIndex, divideIndex -1, divideIndex +1)  
         array.splice((divideIndex -1), 3, (divide(array.at(divideIndex -1), array.at(divideIndex +1))))
     }
-    console.log("array after div loop :", array)
     AS(array)
 }
 
@@ -207,14 +173,10 @@ function AS(array) {
     const additionArray = array.filter((element) => {
         return element === "+"
       })
-      console.log(additionArray) 
     for (let i=0; i < additionArray.length; i++) {
-        console.log(array)
         var addIndex = array.findIndex((element) => element === "+")
-        console.log(addIndex, addIndex -1, addIndex +1)  
         array.splice((addIndex -1), 3, (add(array.at(addIndex -1), array.at(addIndex +1))))
     }
-    console.log("array after add loop :", array)
     S(array)
 }
 
@@ -229,6 +191,5 @@ function S(array) {
         console.log(subtractIndex, subtractIndex -1, subtractIndex +1)  
         array.splice((subtractIndex -1), 3, (subtract(array.at(subtractIndex -1), array.at(subtractIndex +1))))
     }
-    console.log("array after subtract loop :", array)
     display.textContent = array[0]
 }
