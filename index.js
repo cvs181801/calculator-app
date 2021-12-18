@@ -147,7 +147,6 @@ function divide(value1, value2) {
 }
 
 function MDAS(array) {
-    console.log(array)
      const multipleArray = array.filter((element) => {
        return element === "*"
      })
@@ -184,12 +183,11 @@ function S(array) {
     const subtractArray = array.filter((element) => {
         return element === "-"
       })
-      console.log(subtractArray) 
     for (let i=0; i < subtractArray.length; i++) {
         console.log(array)
         var subtractIndex = array.findIndex((element) => element === "-")
         console.log(subtractIndex, subtractIndex -1, subtractIndex +1)  
         array.splice((subtractIndex -1), 3, (subtract(array.at(subtractIndex -1), array.at(subtractIndex +1))))
     }
-    display.textContent = array[0]
+    display.textContent = Math.round(array[0] * 10000) / 10000
 }
