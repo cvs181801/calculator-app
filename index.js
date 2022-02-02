@@ -1,106 +1,31 @@
 
-const zeroBtn = document.getElementById("0");
-const oneBtn = document.getElementById("1");
-const twoBtn = document.getElementById("2");
-const threeBtn = document.getElementById("3");
-const fourBtn = document.getElementById("4");
-const fiveBtn = document.getElementById("5");
-const sixBtn = document.getElementById("6");
-const sevenBtn = document.getElementById("7");
-const eightBtn = document.getElementById("8");
-const nineBtn = document.getElementById("9");
+const getNumWithDec =  /\d*\.?\d+/g;  
+const getCharacters = /([-+*/]?)/g;
 
-const addBtn = document.getElementById("+");
-const subtractBtn = document.getElementById("-");
-const equalsBtn = document.getElementById("=");
-const multiplyBtn = document.getElementById("*");
-const divideBtn = document.getElementById("/");
-const decimalBtn = document.getElementById(".");
-const clearBtn = document.querySelector(".display__clear");
+const buttons = document.querySelectorAll('[data-button]')
+
+buttons.forEach(btn => {
+    btn.textContent+=btn.id
+})
+
 const display = document.querySelector(".display__inner");
 
-zeroBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 0;
+buttons.forEach(btn => {
+    btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        display.textContent += btn.id
+    })
 })
 
-oneBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 1;
-})
 
-twoBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 2;
-})
-
-threeBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 3;
-})
-
-fourBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 4;
-})
-
-fiveBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 5;
-})
-
-sixBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 6;
-})
-
-sevenBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 7;
-})
-
-eightBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 8;
-})
-
-nineBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += 9;
-})
-
-addBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += "+";
-})
-
-subtractBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += "-";
-})
-
-multiplyBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += "*";
-})
-
-divideBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += "/";
-})
-
-decimalBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    display.textContent += ".";
-})
+const clearBtn = document.querySelector(".display__clear");
 
 clearBtn.addEventListener("click", function(event) {
     event.preventDefault();
     display.textContent = "";
 })
 
-const getNumWithDec =  /\d*\.?\d+/g;  
-const getCharacters = /([-+*/]?)/g;
+const equalsBtn = document.getElementById("=");
 
 equalsBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -112,41 +37,40 @@ equalsBtn.addEventListener("click", function(event) {
            return char !== ''
         })
 
-        var fullArray = [parseFloat(numWithDecArray[0]), newCharsArray[0], parseFloat(numWithDecArray[1]), 
-        newCharsArray[1], parseFloat(numWithDecArray[2]), newCharsArray[2], 
-        parseFloat(numWithDecArray[3]), newCharsArray[3], parseFloat(numWithDecArray[4]), newCharsArray[4]]
+        var fullArray = [
+                        parseFloat(numWithDecArray[0]),
+                        newCharsArray[0], 
+                        parseFloat(numWithDecArray[1]), 
+                        newCharsArray[1],
+                        parseFloat(numWithDecArray[2]), 
+                        newCharsArray[2], 
+                        parseFloat(numWithDecArray[3]), 
+                        newCharsArray[3], 
+                        parseFloat(numWithDecArray[4]), 
+                        newCharsArray[4]
+                    ]
        
         MDAS(fullArray)     
     }
-
 })
 
-let sum;
-function add(value1, value2) {
-    sum = value1 + value2;
-    return sum
-}
+const add = (value1, value2) => value1 + value2;
 
-let difference;
-function subtract(value1, value2) {
-    difference = value1 - value2;
-    return difference
-}
+const subtract = (value1, value2) => value1 - value2;
 
-let multiple;
-function multiply(value1, value2) {
-    multiple = value1 * value2;
-    return multiple
-}
+const multiply = (value1, value2) => value1 * value2;
 
-let divided;
-let digitsArray = [];
-function divide(value1, value2) {
-    divided = value1 / value2;
-    return divided
-}
+const divide = (value1, value2) => value1 / value2;
 
 function MDAS(array) {
+    //another way to do this//
+    // array
+    //     .filter(element => element === "*")
+    //     .map(element => {
+    //         const index = array.findIndex(element => element === "*")
+    //         array.splice(index - 1, 3 , multiply(array.at(index -1), array.at(index-1)))
+    //     })
+    
      const multipleArray = array.filter((element) => {
        return element === "*"
      })
@@ -157,7 +81,7 @@ function MDAS(array) {
     DAS(array) 
 }    
 
-function DAS(array) {
+function DAS(array) { 
     const divisionArray = array.filter((element) => {
         return element === "/"
       })
