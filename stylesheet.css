@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 
 :root {
+    --white: rgb(213, 241, 255);
     --light-aqua: rgb(185, 252, 252);
     --dark-aqua: rgb(0, 110, 110);
     --black: rgb(22, 22, 22);
@@ -19,6 +20,9 @@ body {
     margin: 0 auto;
     font-family: 'Comfortaa', sans-serif;
     font-size: 1.8rem;
+    background-color: rgba(213, 241, 255, 0.6);
+    background-image: url('./pics/squiggles.png');
+    background-blend-mode: lighten;
 }
 
 .container {
@@ -39,23 +43,26 @@ body {
     display: flex;
     border-radius: 13px; 
     height: 1.7em;
-    width: 345px;
+    width: 325px;
     height: 2em;
     margin: 1em auto 0 auto;
     justify-content: left;
     padding: .2em;
+    background-color:var(--dark-aqua);
+    color: var(--white);
 }
 
 .display__clear {
     padding: .3em;
     border-radius: 7px;
     text-align: center;
-    border: 2px solid var(--dark-yellow);
+    /*border: 2px solid var(--dark-yellow);*/
     background-color: rgb(250, 250, 126);
     height: 1.5em;
     width: 1.5em;
     font-size: 1.7rem;
     cursor: pointer;
+    color: var(--black);
 }
 
 .display__inner {
@@ -75,23 +82,25 @@ body {
 }
 
 .buttons {
-    border: 2px solid var(--dark-aqua);
+   /*border: 2px solid var(--dark-aqua);*/
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 100%;
     border-radius: 13px; 
     margin-left: .9em;
-    /*max-height: 70vh;*/
+    background-color:var(--dark-aqua);
     padding: .3em;
     margin: 25px 25px 0 25px;
+    font-size: 1.9rem;
 }
 
 .buttons__operands {
-    border: 2px solid var(--dark-aqua);
+    /*border: 2px solid var(--dark-aqua);*/
     border-radius: 13px; 
     margin: 25px 25px 0 25px;
     padding: .3em;
     height: 300px;
+    background-color:var(--dark-aqua);
 }
 
 .buttons__round {
@@ -106,7 +115,7 @@ body {
 
 }
 .operands__round {
-    border: 2px solid var(--dark-hotpink);
+    /*border: 2px solid var(--dark-hotpink);*/
     border-radius: 50%; 
     margin: 10px auto 0 auto;
     padding: 10px;
