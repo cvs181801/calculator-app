@@ -12,6 +12,7 @@ Check it out here: https://cvs181801.github.io/calculator-app/
 
 Wishlist: 
 - Negative numbers.  Currently, the calculator is not programmed to support negative numbers.  It would be nice to add this feature into the programming.
+- Parentheses and exponents.  It would be nice to add these features as well, and make this an official PEMDAS calculator!
 
 Developed by Cas Spicer, Software Developer & Problem Solver Extraordinaire
 Learn more about me and check out my work on my website at www.casspicer.com
