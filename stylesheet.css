@@ -18,12 +18,12 @@ body {
     color: var(--black);
     margin: 0 auto;
     font-family: 'Comfortaa', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
 }
 
 .container {
-    width: 95vw;
-    height: 95vh;
+    width: 400px;
+    height: 600px;
     border: 2px solid var(--dark-aqua);
     border-radius: 13px;
     margin: .7em auto 0 auto;
@@ -31,6 +31,7 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
+    padding: .5em;
 }
 
 .display {
@@ -38,9 +39,9 @@ body {
     display: flex;
     border-radius: 13px; 
     height: 1.7em;
-    width: 90vw;
-    max-height: 5em;
-    margin: 1.5em auto 0 auto;
+    width: 345px;
+    height: 2em;
+    margin: 1em auto 0 auto;
     justify-content: left;
     padding: .2em;
 }
@@ -62,6 +63,7 @@ body {
     width: 10em;
     text-align: left;
     font-size: 1.7rem;
+    padding: .3em;
 }
 
 .buttonsContain {
@@ -79,27 +81,26 @@ body {
     flex: 1 1 100%;
     border-radius: 13px; 
     margin-left: .9em;
-    max-height: 70vh;
-    width: 90vw;
-    margin: .5em .5em 0 .5em;
+    /*max-height: 70vh;*/
     padding: .3em;
-  
+    margin: 25px 25px 0 25px;
 }
 
 .buttons__operands {
     border: 2px solid var(--dark-aqua);
     border-radius: 13px; 
-    margin: .5em .5em 0 .5em;
+    margin: 25px 25px 0 25px;
     padding: .3em;
+    height: 300px;
 }
 
 .buttons__round {
     border: 2px solid var(--dark-aqua);
     border-radius: 50%; 
-    margin: .3em auto 0 auto;
-    padding: .3em;
-    max-width: 2em;
-    max-height: 2em;
+    margin: 10px auto 0 auto;
+    padding: 10px;
+    width: 2em;
+    height: 2em;
     background-color: aqua;
     cursor: pointer;
 
@@ -107,21 +108,11 @@ body {
 .operands__round {
     border: 2px solid var(--dark-hotpink);
     border-radius: 50%; 
-    margin: .3em auto 0 auto;
-    padding: .3em;
+    margin: 10px auto 0 auto;
+    padding: 10px;
+    width: 2em;
+    height: 2em;
     background-color: hotpink;
     cursor: pointer;
 }
 
-@media (min-width: 600px) {
-    .container {
-        width: 35vw;
-        height: 75vh;
-        margin: 2.5em auto 0 auto;
-    }
-
-    .display {
-        max-width: 30vw;
-        max-height: 5em;
-    }
-}
