@@ -28,9 +28,9 @@ body {
 .container {
     width: 400px;
     height: 600px;
-    border: 2px solid var(--dark-aqua);
+    border: 7px solid var(--dark-aqua);
     border-radius: 13px;
-    margin: .7em auto 0 auto;
+    margin: 2em auto 0 auto;
     background-color: var(--light-aqua);
     text-align: center;
     align-items: center;
